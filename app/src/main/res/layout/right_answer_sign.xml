@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:background="@drawable/semi_circle_shape"
+    android:backgroundTint="@color/question_right_background"
+    android:padding="10dp"
+    android:layout_height="250dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="5dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Right Awnser"
+        android:textAlignment="center"
+        android:textColor="@color/question_right_text"
+        android:textSize="30sp"/>
+
+    <ImageView
+        android:id="@+id/dialog_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/circle_shape"
+        android:backgroundTint="@color/white"/>
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:backgroundTint="@color/question_right_icon"
+            android:background="@drawable/baseline_check_24">
+    </ImageView>
+</RelativeLayout>

@@ -1,0 +1,121 @@
+package com.example.apprk;
+
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.text.Editable;
+        import android.text.TextWatcher;
+        import android.widget.CheckBox;
+        import android.widget.EditText;
+
+        import androidx.appcompat.app.AppCompatActivity;
+
+public class SettingsActivity extends AppCompatActivity {
+    EditText text4;
+    EditText text5;
+    EditText text6;
+    EditText text7;
+    EditText text8;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+
+        InformationRetrieve userData = new InformationRetrieve(this);
+
+        findViewById(R.id.exit_button).setOnClickListener(v -> {
+            Intent intent1 = new Intent(SettingsActivity.this, MenuActivity.class);
+            startActivity(intent1);
+        });
+
+
+        CheckBox questionOnly = findViewById(R.id.edit_text0);
+        questionOnly.setChecked(InformationRetrieve.isOnlyQuestions());
+
+        CheckBox slideOnly = findViewById(R.id.edit_text9);
+        slideOnly.setChecked(InformationRetrieve.isOnlySlides());
+        questionOnly.setOnCheckedChangeListener((compoundButton, checked) -> {
+            if (checked) {
+                slideOnly.setChecked(false);
+            }
+            InformationRetrieve.setOnlyQuestions(questionOnly.isChecked());
+            InformationRetrieve.setOnlySlides(slideOnly.isChecked());
+        });
+
+        slideOnly.setOnCheckedChangeListener((compoundButton, checked) -> {
+            if (checked) {
+                questionOnly.setChecked(false);
+            }
+            InformationRetrieve.setOnlyQuestions(questionOnly.isChecked());
+            InformationRetrieve.setOnlySlides(slideOnly.isChecked());
+        });
+
+        CheckBox randBox = findViewById(R.id.edit_text1);
+        randBox.setChecked(InformationRetrieve.isRandomizer());
+        randBox.setOnClickListener(v -> InformationRetrieve.setRandomizer(randBox.isChecked()));
+
+        CheckBox recomBox = findViewById(R.id.edit_text2);
+        recomBox.setChecked(InformationRetrieve.isRecomendation());
+        recomBox.setOnClickListener(v -> InformationRetrieve.setRecomendation(recomBox.isChecked()));
+
+        CheckBox onlyFavorite = findViewById(R.id.edit_text10);
+        onlyFavorite.setChecked(InformationRetrieve.isOnlyFavorite());
+        onlyFavorite.setOnClickListener(v -> InformationRetrieve.setOnlyFavorite(onlyFavorite.isChecked()));
+
+        findViewById(R.id.edit_text3).setOnClickListener(v -> InformationRetrieve.setcharacteresAcertados(new String[0]));
+
+        text4 = findViewById(R.id.edit_text4);
+        text5 = findViewById(R.id.edit_text5);
+        text6 = findViewById(R.id.edit_text6);
+        text7 = findViewById(R.id.edit_text7);
+        text8 = findViewById(R.id.edit_text8);
+        text4.setText(String.valueOf(InformationRetrieve.getNumSlides()));
+        text5.setText(String.valueOf(InformationRetrieve.getNumQuestionType1()));
+        text6.setText(String.valueOf(InformationRetrieve.getNumQuestionType2()));
+        text7.setText(String.valueOf(InformationRetrieve.getNumQuestionType3()));
+        text8.setText(String.valueOf(InformationRetrieve.getNumQuestionType4()));
+        setupEditText(text4);
+        setupEditText(text5);
+        setupEditText(text6);
+        setupEditText(text7);
+        setupEditText(text8);
+
+    }
+    private void setupEditText(EditText editText) {
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                int value = 0;
+                try {
+                    value = Integer.parseInt(s.toString());
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+
+                if (editText.getId() == R.id.edit_text4) {
+                    InformationRetrieve.setNumSlides(value);
+                } else if (editText.getId() == R.id.edit_text5) {
+                    InformationRetrieve.setNumQuestionType1(value);
+                } else if (editText.getId() == R.id.edit_text6) {
+                    InformationRetrieve.setNumQuestionType2(value);
+                } else if (editText.getId() == R.id.edit_text7) {
+                    InformationRetrieve.setNumQuestionType3(value);
+                } else if (editText.getId() == R.id.edit_text8) {
+                    InformationRetrieve.setNumQuestionType4(value);
+                }
+            }
+        });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent1 = new Intent(SettingsActivity.this, MenuActivity.class);
+        startActivity(intent1);
+        super.onBackPressed();
+    }
+}
