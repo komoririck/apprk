@@ -12,7 +12,6 @@ import java.util.List;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.ViewHolder> {
     private List<String[]> alphabet;
-    private List<String> newDataFiltered = new ArrayList<>();
     private OnItemClickListener onItemClickListener;
 
     public CharacterAdapter(List<String[]> alphabet) {
@@ -40,12 +39,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        newDataFiltered.clear();
-        for (String[] d : alphabet)
-            newDataFiltered.add(d[0]);
-
-        String letter = newDataFiltered.get(position);
-
+        String letter = alphabet.get(position)[0];
         holder.textView.setText(letter);
 
         holder.itemView.setOnClickListener(v -> {

@@ -28,15 +28,17 @@
             app:cardBackgroundColor="@color/general_main_bar"
             app:cardCornerRadius="4dp">
             <ImageView
+
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/baseline_settings_24"
-                app:tint="@color/menu_icon_color" />
+                app:tint="@color/menu_icon_color"
+                android:contentDescription="@string/to_settings" />
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textAlignment="center"
@@ -45,20 +47,29 @@
             android:textSize="30sp"
             android:fontFamily="cursive"
             android:textColorHint="@color/text_title_color"
-            android:text="Remembering Japanese"
+            android:text="@string/remembering_japanese"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeStepGranularity="2sp"
             />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/forwardButton"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded"
             android:layout_marginVertical="2dp"
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
+            android:lines="1"
             android:layout_height="match_parent"
             android:backgroundTint="#6A9B2A"
             android:textColor="@color/white"
-            android:text="Start"
+            android:text="@string/start"
             android:drawableEnd="@drawable/baseline_arrow_circle_right_24"
-            android:drawableTint="#76B622" />
+            android:drawableTint="#76B622"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeMaxTextSize="20sp"
+            android:autoSizeStepGranularity="2sp" />
 
     </LinearLayout>
 
@@ -77,7 +88,7 @@
             android:id="@+id/gridLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:rowCount="15"
+            android:rowCount="16"
             android:layout_margin="10dp"
             android:columnCount="2">
 
@@ -87,7 +98,7 @@
                 android:textSize="50sp"
                 android:fontFamily="cursive"
                 android:textColor="@color/text_color"
-                android:text="Kana"
+                android:text="@string/kana"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:clickable="false"
@@ -97,9 +108,10 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button1"
-                android:text="Hiragana"
+                android:text="@string/hiragana"
                 android:clickable="true"
                 android:layout_width="150dp"
+                android:tag="Hiragana"
                 android:layout_height="150dp"
                 android:layout_row="2"
                 android:textColor="@color/menu_icon_color"
@@ -107,7 +119,7 @@
                 android:layout_margin="20dp"
                 android:layout_gravity="center"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
                 android:background="@drawable/menu_cardview_default_border"
                 android:focusable="true">
 
@@ -116,9 +128,10 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button2"
                 android:clickable="true"
-                android:text="Katakana"
+                android:text="@string/katakana"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
+                android:tag="Katakana"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:textColor="@color/menu_icon_color"
@@ -137,7 +150,7 @@
                 android:textSize="50sp"
                 android:fontFamily="cursive"
                 android:textColor="@color/text_color"
-                android:text="Kanji"
+                android:text="@string/kanji"
                 android:clickable="false"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -147,13 +160,14 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button3"
-                android:text="Kanji N5"
+                android:text="@string/kanji_n5"
                 android:clickable="true"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_row="4"
+                android:tag="Kanji N5"
                 android:layout_column="0"
                 android:textColor="@color/menu_icon_color"
                 android:layout_margin="20dp"
@@ -167,12 +181,13 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button4"
                 android:clickable="true"
-                android:text="Kanji N4"
+                android:text="@string/kanji_n4"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_row="4"
+                android:tag="Kanji N4"
                 android:layout_column="1"
                 android:textColor="@color/menu_icon_color"
                 android:layout_margin="20dp"
@@ -185,12 +200,13 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button5"
                 android:clickable="true"
-                android:text="Kanji N3"
+                android:text="@string/kanji_n3"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_row="5"
+                android:tag="Kanji N3"
                 android:textColor="@color/menu_icon_color"
                 android:layout_column="0"
                 android:layout_margin="20dp"
@@ -203,13 +219,14 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button6"
                 android:clickable="true"
-                android:text="Kanji N2"
+                android:text="@string/kanji_n2"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
                 android:layout_width="150dp"
                 android:textColor="@color/menu_icon_color"
                 android:layout_height="150dp"
                 android:layout_row="5"
+                android:tag="Kanji N2"
                 android:layout_column="1"
                 android:layout_margin="20dp"
                 android:layout_gravity="center"
@@ -221,9 +238,10 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button7"
                 android:clickable="false"
-                android:text="Kanji N1"
+                android:text="@string/kanji_n1"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
+                android:tag="Kanji N1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_row="6"
@@ -232,9 +250,7 @@
                 android:layout_margin="20dp"
                 android:layout_gravity="center"
                 android:background="@drawable/menu_cardview_default_border"
-                android:drawableBottom="@drawable/baseline_construction_24"
-                android:drawableTint="@color/menu_icon_color"
-                android:focusable="true">
+               android:focusable="true">
 
             </androidx.appcompat.widget.AppCompatButton>
 
@@ -244,7 +260,7 @@
                 android:textSize="50sp"
                 android:fontFamily="cursive"
                 android:textColor="@color/text_color"
-                android:text="Word"
+                android:text="@string/word"
                 android:clickable="false"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -254,9 +270,10 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button8"
-                android:text="Word N5"
+                android:text="@string/word_n5"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
+                android:tag="Word N5"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_rowWeight="8"
@@ -271,9 +288,10 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button10"
-                android:text="Word N4"
+                android:text="@string/word_n4"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
+                android:tag="Word N4"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_rowWeight="8"
@@ -289,9 +307,10 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button11"
-                android:text="Word N3"
+                android:text="@string/word_n3"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
+                android:tag="Word N3"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_rowWeight="9"
@@ -307,9 +326,10 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button12"
-                android:text="Word N2"
+                android:text="@string/word_n2"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
+                android:tag="Word N2"
                 android:layout_width="150dp"
                 android:textColor="@color/menu_icon_color"
                 android:layout_height="150dp"
@@ -318,8 +338,6 @@
                 android:layout_margin="20dp"
                 android:layout_gravity="center"
                 android:background="@drawable/menu_cardview_default_border"
-                android:drawableBottom="@drawable/baseline_construction_24"
-                android:drawableTint="@color/menu_icon_color"
                 android:focusable="true">
 
             </androidx.appcompat.widget.AppCompatButton>
@@ -327,9 +345,10 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button13"
-                android:text="Word N1"
+                android:text="@string/word_n1"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
+                android:tag="Word N1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_rowWeight="10"
@@ -338,8 +357,6 @@
                 android:layout_margin="20dp"
                 android:layout_gravity="center"
                 android:background="@drawable/menu_cardview_default_border"
-                android:drawableBottom="@drawable/baseline_construction_24"
-                android:drawableTint="@color/menu_icon_color"
                 android:focusable="true">
 
             </androidx.appcompat.widget.AppCompatButton>
@@ -350,7 +367,7 @@
                 android:textSize="50sp"
                 android:fontFamily="cursive"
                 android:textColor="@color/text_color"
-                android:text="Dictionary"
+                android:text="@string/dictionary"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:clickable="false"
@@ -361,10 +378,10 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_row="12"
                 android:layout_column="0"
-                android:text="Word"
+                android:text="@string/word"
                 android:id="@+id/button14"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="20dp"
@@ -379,9 +396,26 @@
                 android:layout_row="12"
                 android:layout_column="1"
                 android:id="@+id/button15"
-                android:text="Kanji"
+                android:text="@string/kanji"
                 android:fontFamily="cursive"
-                android:textSize="27sp"
+                android:textSize="20sp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:textColor="@color/menu_icon_color"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/menu_cardview_default_border"
+                android:focusable="true">
+
+
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_row="13"
+                android:layout_column="0"
+                android:id="@+id/button16"
+                android:text="@string/kana"
+                android:fontFamily="cursive"
+                android:textSize="20sp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:textColor="@color/menu_icon_color"

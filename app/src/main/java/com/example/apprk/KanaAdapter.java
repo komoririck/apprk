@@ -9,19 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
-    private final List<String[]> wordListData;
+public class KanaAdapter extends RecyclerView.Adapter<KanaAdapter.ViewHolder> {
+    private final List<String[]> kanaAdapter;
     private OnItemClickListener onItemClickListener;
-
-    public WordAdapter(List<String[]> wordListData) {
-        this.wordListData = wordListData;
+    public KanaAdapter(List<String[]> kanaAdapter) {
+        this.kanaAdapter = kanaAdapter;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.word_list_menu_item, parent, false);
+                .inflate(R.layout.kana_list_menu_item, parent, false);
         return new ViewHolder(view);
     }
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -29,42 +28,40 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     }
 
     public void setData(List<String[]> newData) {
-        wordListData.clear();
-        wordListData.addAll(newData);
+        kanaAdapter.clear();
+        kanaAdapter.addAll(newData);
         notifyDataSetChanged();
     }
 
     public interface OnItemClickListener {
         void onItemClick(String text);
+
+
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.wordKanji.setText(wordListData.get(position)[0]);
-        holder.wordKana.setText(wordListData.get(position)[1]);
-        holder.wordTranslate.setText(wordListData.get(position)[2]);
+        holder.wordKanji.setText(kanaAdapter.get(position)[0]);
+        holder.wordKana.setText(kanaAdapter.get(position)[1]);
 
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
-                onItemClickListener.onItemClick(wordListData.get(position)[0] +"$"+ wordListData.get(position)[2]);
+                onItemClickListener.onItemClick(kanaAdapter.get(position)[0]);
             }
         });
     }
-
     @Override
     public int getItemCount() {
-        return wordListData.size();
+        return kanaAdapter.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView wordKanji;
         TextView wordKana;
-        TextView wordTranslate;
 
         public ViewHolder(View itemView) {
             super(itemView);
             wordKanji = itemView.findViewById(R.id.word_kanji);
             wordKana = itemView.findViewById(R.id.word_kana);
-            wordTranslate = itemView.findViewById(R.id.word_translate);
         }
     }
 }

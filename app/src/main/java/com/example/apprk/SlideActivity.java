@@ -17,12 +17,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,14 +28,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+//Hi there, sorry for the brazilenglish variables
+
 public class SlideActivity extends AppCompatActivity {
     private TextView characterTextView;
     private TextView readingATextView;
     private TextView readingBTextView;
     private TextView readingCTextView;
-    private TextView meaningTextView;
     private List<String[]> matrix = new ArrayList<>();
-    private final List<String[]> seenMatrix = new ArrayList<>();
+    private List<String[]> seenMatrix = new ArrayList<>();
     private int currentIndex = 0;
     private String displayType;
     private ViewFlipper viewFlipper;
@@ -57,16 +56,16 @@ public class SlideActivity extends AppCompatActivity {
     private ImageButton star;
     private Drawable starOn;
     private Drawable starOff;
-    private final int[] maxIterations = {6, 3, 3, 3, 3}; // maximum number of iterations for each state
-    private final int[] currentIterations = {1, 0, 0, 0, 0}; // current number of iterations for each state
-    private final List<String> characteresAcertados = new ArrayList<>();
-    private final ArrayList<String> arrayFirstItemMatrix = new ArrayList<>();
+    private final int[] maxIterations = {6, 3, 3, 3, 3,3,3}; // maximum number of iterations for each state
+    private final int[] currentIterations = {1, 0, 0, 0, 0,0,0}; // current number of iterations for each state
+    private List<String[]> characteresAcertados = new ArrayList<>();
+    private String[] charAcertado = new String[4];
     private final SlideLib Lib = new SlideLib();
     private TextToSpeech textToSpeech;
     private String currentText;
     String[] characterInfo;
 
-    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult( // starting audio
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
@@ -114,12 +113,22 @@ public class SlideActivity extends AppCompatActivity {
 
         InformationRetrieve info = new InformationRetrieve(this);
 
-        maxIterations[0] = InformationRetrieve.getNumSlides();
-        maxIterations[1] = InformationRetrieve.getNumQuestionType1();
-        maxIterations[2] = InformationRetrieve.getNumQuestionType2();
-        maxIterations[3] = InformationRetrieve.getNumQuestionType3();
-        maxIterations[4] = InformationRetrieve.getNumQuestionType4();
+        maxIterations[0] = InformationRetrieve.getNumSlides() +1;
+        maxIterations[1] = InformationRetrieve.getNumQuestionType1() +1;
+        maxIterations[2] = InformationRetrieve.getNumQuestionType2() +1;
+        maxIterations[3] = InformationRetrieve.getNumQuestionType3() +1;
+        maxIterations[4] = InformationRetrieve.getNumQuestionType4() +1;
+        maxIterations[5] = InformationRetrieve.getNumQuestionType5() +1;
+        maxIterations[6] = InformationRetrieve.getNumQuestionType6() +1;
+        characteresAcertados = InformationRetrieve.getCharacteresAcertados();
 
+        if ((maxIterations[0] + maxIterations[1] + maxIterations[2] + maxIterations[3] + maxIterations[4] + maxIterations[5] + maxIterations[6]) == 0) {
+            InformationRetrieve.setOnlySlides(true);
+            InformationRetrieve.setOnlyQuestions(false);        }
+        if ((maxIterations[1] + maxIterations[2] + maxIterations[3] + maxIterations[4] + maxIterations[5] + maxIterations[6]) == 0) {
+            InformationRetrieve.setOnlySlides(true);
+            InformationRetrieve.setOnlyQuestions(false);
+        }
 
         ArrayList lettersToShow = new ArrayList(intent.getStringArrayListExtra("letters_to_show"));
 
@@ -161,14 +170,12 @@ public class SlideActivity extends AppCompatActivity {
                     list5 = SpreadsheetReader.read(this, "wordn5.csv");
                 break;
         }
+
         list5.addAll(list4);
         list5.addAll(list3);
         list5.addAll(list2);
         list5.addAll(list1);
         matrix = list5;
-
-        for (String[] array : matrix)
-            arrayFirstItemMatrix.add(array[0]);
 
         if (InformationRetrieve.isRandomizer())
             Collections.shuffle(matrix);
@@ -176,7 +183,11 @@ public class SlideActivity extends AppCompatActivity {
         if (InformationRetrieve.isOnlyQuestions())
             seenMatrix.addAll(matrix);
 
+        //checking if the first slide is favorited
         if (InformationRetrieve.isOnlyFavorite() && !displayType.equals("kana")){
+            ArrayList<String> arrayFirstItemMatrix = new ArrayList<>();
+            for (String[] array : matrix)
+                arrayFirstItemMatrix.add(array[0]);
             List<String[]> tmpFavoriteMatrix = new ArrayList<>();
             for(int i = 0; i < arrayFirstItemMatrix.size(); i++){
                 if(displayType.equals("kanji") && InformationRetrieve.hasFavoritedKanji(arrayFirstItemMatrix.get(i))){
@@ -200,7 +211,6 @@ public class SlideActivity extends AppCompatActivity {
         readingATextView = findViewById(R.id.kana_text_view);
         readingBTextView = findViewById(R.id.transl_text_view);
         readingCTextView = findViewById(R.id.translate_text_view);
-        meaningTextView = findViewById(R.id.example_translate_text_view);
 
         imageView = findViewById(R.id.image_view);
         questionTextView = findViewById(R.id.translate_letter_text_view);
@@ -215,13 +225,11 @@ public class SlideActivity extends AppCompatActivity {
         findViewById(R.id.button3).setOnClickListener(v -> textToSpeech.speak(currentText, TextToSpeech.QUEUE_FLUSH, null));
         findViewById(R.id.translate_button3).setOnClickListener(v -> textToSpeech.speak(currentText, TextToSpeech.QUEUE_FLUSH, null));
 
-        findViewById(R.id.exit_button).setOnClickListener(v -> onBackPressed());
+        findViewById(R.id.exit_button).setOnClickListener(v -> onBackPressed());//go back prevent the slide to keeping info
 
-        setupViewFlipper();
+        setupViewFlipper(); //Inicial display and start of the recursive loop
 
-        SlideLib.debugLog(InformationRetrieve.getFavoritedWord());
-        SlideLib.debugLog(InformationRetrieve.getFavoritedkanji());
-        star.setOnClickListener(v -> {
+        star.setOnClickListener(v -> {//favorite button
             if(currentState == 0)
                 if (star.getBackground().equals(starOff)) {
                     if(displayType.equals("kanji")) {
@@ -252,55 +260,54 @@ public class SlideActivity extends AppCompatActivity {
         fillViewFlipper();
     }
     private void fillViewFlipper() {
-
         int lastIndex = characteresAcertados.size() -1;
+        //check if has anwsered a question
         if (checkdraw) {
-            if (Lib.compareBitmaps(letterBitmap, drawingView.getBitmap()) < 0.1){
-                characteresAcertados.remove(lastIndex);
-            } else {
+            if (Lib.compareBitmaps(letterBitmap, drawingView.getBitmap()) > 0.1){ // this rate must be recalculated, by now, not recording right anwser
+                characteresAcertados.add(charAcertado);
                 InformationRetrieve.addPoint(1);
             }
             checkdraw = false;
         } else if (checkTranslate) {
             switch (selectedOption) {
                 case -1:
-                    characteresAcertados.remove(lastIndex);
                     break;
                 case 1:
-                    if (!Lib.checkTranslationAnswer(option1Button.getText(), translateAwnser)){
-                        characteresAcertados.remove(lastIndex);
-                        showAnwserDialogue(R.layout.wrong_answer_sign);
+                    if (Lib.checkTranslationAnswer(option1Button.getText(), translateAwnser)){
+                        characteresAcertados.add(charAcertado);
+                        showAnwserDialogue(R.layout.right_answer_sign, true);
                     } else {
-                        showAnwserDialogue(R.layout.right_answer_sign);
+                        showAnwserDialogue(R.layout.wrong_answer_sign, false);
                     }
                     break;
                 case 2:
-                    if (!Lib.checkTranslationAnswer(option2Button.getText(), translateAwnser)){
-                        characteresAcertados.remove(lastIndex);
-                        showAnwserDialogue(R.layout.wrong_answer_sign);
+                    if (Lib.checkTranslationAnswer(option2Button.getText(), translateAwnser)){
+                        characteresAcertados.add(charAcertado);
+                        showAnwserDialogue(R.layout.right_answer_sign, true);
                     } else {
-                        showAnwserDialogue(R.layout.right_answer_sign);
+                        showAnwserDialogue(R.layout.wrong_answer_sign, false);
                     }
                     break;
                 case 3:
-                    if (!Lib.checkTranslationAnswer(option3Button.getText(), translateAwnser)){
-                        characteresAcertados.remove(lastIndex);
-                        showAnwserDialogue(R.layout.wrong_answer_sign);
+                    if (Lib.checkTranslationAnswer(option3Button.getText(), translateAwnser)){
+                        characteresAcertados.add(charAcertado);
+                        showAnwserDialogue(R.layout.right_answer_sign, true);
                     } else {
-                        showAnwserDialogue(R.layout.right_answer_sign);
+                        showAnwserDialogue(R.layout.wrong_answer_sign, false);
                     }
                     break;
             }
-            checkTranslate = false;
         }
+        //reset for the next slide
         Lib.cleanButtons(this, Arrays.asList(option1Button, option2Button, option3Button));
         translateAwnser = "";
         selectedOption = -1;
-        Lib.updateList(matrix, arrayFirstItemMatrix,characteresAcertados);
+        checkTranslate = false;
+
         if (InformationRetrieve.isOnlyQuestions())
             maxIterations[0] = 0;
 
-        if (currentIndex >= matrix.size())
+        if (currentIndex >= matrix.size())//prevent from null at end of the slides
                 currentIndex = 0;
 
         star.setVisibility(View.INVISIBLE);
@@ -312,14 +319,25 @@ public class SlideActivity extends AppCompatActivity {
                 slideCaseOneDrawing();
                 break;
             case 2:
-                slideCaseTwoKanaToKanji();
+                slideCaseTwo(); // EN TO JAPANESE
                 break;
             case 3:
-                slideCaseThreeKanjiToKana();
+                slideCaseThree(); // JAPANESE TO EN
                 break;
             case 4:
                 slideCaseFourListening();
                 break;
+            case 5:
+                slideCaseFive(); //Kanji to kana
+                break;
+            case 6:
+                slideCaseSix(); //Kana to kanji
+                break;
+
+        }
+        if (InformationRetrieve.isRecomendation() && seenMatrix.size() > 3) {
+            seenMatrix = SlideLib.removeOutsideNorm(seenMatrix, characteresAcertados);
+            InformationRetrieve.setCharacteresAcertados(characteresAcertados);
         }
     }
     private void slideCaseZeroSlide(){
@@ -327,7 +345,9 @@ public class SlideActivity extends AppCompatActivity {
             setCharacterAndPhrase(currentIndex);
             viewFlipper.setDisplayedChild(0);
             setupFavoritedStar();
-            seenMatrix.add(matrix.get(currentIndex));
+            if (!seenMatrix.contains(matrix.get(currentIndex))) {
+                seenMatrix.add(matrix.get(currentIndex));
+            }
             currentIndex++;
         } else {
             if (!InformationRetrieve.isOnlySlides())
@@ -342,7 +362,7 @@ public class SlideActivity extends AppCompatActivity {
             fillViewFlipper();
         } else if (currentIterations[1] < maxIterations[1]) {
             String[] charac = seenMatrix.get(new Random().nextInt(seenMatrix.size()));
-            characteresAcertados.add(charac[0]);
+            charAcertado = charac;
             drawingView = findViewById(R.id.drawing_view);
             drawingView.clearCanvas();
             letterBitmap = Lib.generateCaptchaBitmap(charac[0]);
@@ -355,54 +375,92 @@ public class SlideActivity extends AppCompatActivity {
             fillViewFlipper();
         }
     }
-    private void slideCaseTwoKanaToKanji() {
+    private void slideCaseTwo() {
+        int listPosition = 0; // EN text position
+        switch (displayType) {
+            case "kana":
+                listPosition = 1;
+                break;
+            case "kanji":
+                listPosition = 3;
+                break;
+            case "word":
+                listPosition = 2;
+                break;
+        }
         if (currentIterations[2] < maxIterations[2]) {
             List<Integer> randomIndexes = SlideLib.generateRandomIndexes(3, seenMatrix.size());
-            String[] rightAnswer = seenMatrix.get(randomIndexes.get(0));
+            String[] rightAnswer = seenMatrix.get(randomIndexes.get(0)); // mudar nome para optionAcorrectAnswer
             String[] optionB = seenMatrix.get(randomIndexes.get(1));
             String[] optionC = seenMatrix.get(randomIndexes.get(2));
-
+            charAcertado = seenMatrix.get(randomIndexes.get(0));
+            //Setting the current text, the reference text for the answer, this cade EN Meaning
+            String referenceButtonText = rightAnswer[listPosition];
             switch (displayType) {
                 case "kana":
-                    characteresAcertados.add(rightAnswer[0]);
-                    questionTextView.setText(rightAnswer[1]);
+                    questionTextView.setText(referenceButtonText);
                     break;
                 case "kanji":
-                    if (!(rightAnswer[2].isEmpty() && rightAnswer[1].isEmpty())){
-                        Random random = new Random();
-                        boolean chooseVariable1 = random.nextBoolean();
-                        int selectedVariable = chooseVariable1 ? 2 : 1;
-                        questionTextView.setText(rightAnswer[selectedVariable]);
-                    } else if (rightAnswer[2].isEmpty()){
-                        questionTextView.setText(rightAnswer[1]);
-                    } else if (rightAnswer[1].isEmpty()){
-                        questionTextView.setText(rightAnswer[2]);
-                    }
-
-                    questionTextView.setText(rightAnswer[2]);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        questionTextView.setAutoSizeTextTypeUniformWithConfiguration(12, 70, 1, TypedValue.COMPLEX_UNIT_DIP);
-                    }
-                    characteresAcertados.add(rightAnswer[0]);
-                    break;
                 case "word":
-                    setTextViewText(questionTextView, "", rightAnswer[2].split("-"));
+                    setTextViewText(questionTextView, "", referenceButtonText.split("-", 3));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                        questionTextView.setAutoSizeTextTypeUniformWithConfiguration(12, 70, 1, TypedValue.COMPLEX_UNIT_DIP);
-                    characteresAcertados.add(rightAnswer[0]);
+                        questionTextView.setAutoSizeTextTypeUniformWithConfiguration(16, 70, 1, TypedValue.COMPLEX_UNIT_DIP);
                     break;
             }
+
+            //Setting the options for the buttons
             List<String> options = new ArrayList<>();
-            options.add(rightAnswer[0]);
-            translateAwnser = options.get(0);
-            currentText = translateAwnser;
-            options.add(optionB[0]);
-            options.add(optionC[0]);
+            switch (displayType) {
+                case "kana":
+                    options.add(rightAnswer[0]);
+                    options.add(optionB[0]);
+                    options.add(optionC[0]);
+                    translateAwnser = rightAnswer[0];
+                    currentText = rightAnswer[0];
+                    break;
+                case "word":
+                case "kanji":
+                    //1button right
+                    List<String> ValidReading = new ArrayList<>();
+                    if(!rightAnswer[listPosition-2].isEmpty())
+                        ValidReading.add(rightAnswer[listPosition-2]);
+                    if (!rightAnswer[listPosition-1].isEmpty())
+                        ValidReading.add(rightAnswer[listPosition-1]);
+                    if(displayType.equals("kanji"))
+                        Collections.shuffle(ValidReading);
+                    options.add(ValidReading.get(0));
+                    translateAwnser = ValidReading.get(0); // mudar nome para ANSWER
+                    currentText = ValidReading.get(0);
+
+                    //2button
+                    ValidReading = new ArrayList<>();
+                    if(!optionB[listPosition-2].isEmpty())
+                        ValidReading.add(optionB[listPosition-2]);
+                    if (!optionB[listPosition-1].isEmpty())
+                        ValidReading.add(optionB[listPosition-1]);
+                    if(displayType.equals("kanji"))
+                        Collections.shuffle(ValidReading);
+                    options.add(ValidReading.get(0));
+
+                    //3button
+                    ValidReading = new ArrayList<>();
+                    if(!optionC[listPosition-2].isEmpty())
+                        ValidReading.add(optionC[listPosition-2]);
+                    if (!optionC[listPosition-1].isEmpty())
+                        ValidReading.add(optionC[listPosition-1]);
+                    if(displayType.equals("kanji"))
+                        Collections.shuffle(ValidReading);
+                    options.add(ValidReading.get(0));
+
+                    break;
+            }
+
+            //setting buttons
             Collections.shuffle(options);
             option1Button.setText(options.get(0));
             option2Button.setText(options.get(1));
             option3Button.setText(options.get(2));
-
+            //preparing next scene
             checkTranslate = true;
             QuestionType = 2;
             viewFlipper.setDisplayedChild(2);
@@ -412,40 +470,59 @@ public class SlideActivity extends AppCompatActivity {
             fillViewFlipper();
         }
     }
-    private void slideCaseThreeKanjiToKana() {
-        int listPosition = 0;
-        switch (displayType) {
-            case "kana":
-                listPosition = 1;
-                break;
-            case "kanji":
-            case "word":
-                listPosition = 2;
-                break;
-        }
+    private void slideCaseThree() {
         if (currentIterations[3] < maxIterations[3]) {
-            //here at the kanji display we translate kanji to kun and on
-                //the buttons display all the translations at once
-                    //is possible to add randomness in which reading the buttons will display
             List<Integer> randomIndexes = SlideLib.generateRandomIndexes(3, seenMatrix.size());
-            String[] rightAnswer = seenMatrix.get(randomIndexes.get(0));
+            String[] rightAnswer = seenMatrix.get(randomIndexes.get(0)); // mudar nome para optionAcorrectAnswer
             String[] optionB = seenMatrix.get(randomIndexes.get(1));
             String[] optionC = seenMatrix.get(randomIndexes.get(2));
+            charAcertado = seenMatrix.get(randomIndexes.get(0));
+            //Setting the current text, the reference text for the answer, this cade JP sentence
+            String referenceButtonText = rightAnswer[0];
+            switch (displayType) {
+                case "kana":
+                case "kanji":
+                    questionTextView.setText(referenceButtonText);
+                    currentText = rightAnswer[0]; // Current needs to follow the JP text here
+                    break;
+                case "word":
+                    if(!rightAnswer[0].isEmpty())
+                        referenceButtonText = rightAnswer[0];
+                    else
+                        referenceButtonText = rightAnswer[1];
 
-            characteresAcertados.add(rightAnswer[0]);
-            questionTextView.setText(rightAnswer[0]);
+                    questionTextView.setText(referenceButtonText);
+                    currentText = referenceButtonText; // CurrentTxt needs to follow the JP text here
 
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                        questionTextView.setAutoSizeTextTypeUniformWithConfiguration(16, 70, 1, TypedValue.COMPLEX_UNIT_DIP);
+                    break;
+            }
+
+            //Setting the options for the buttons
             List<String> options = new ArrayList<>();
-            options.add(rightAnswer[listPosition]);
-            translateAwnser = options.get(0);
-            currentText = translateAwnser;
-            options.add(optionB[listPosition]);
-            options.add(optionC[listPosition]);
+            int n = 0;
+            switch (displayType) {
+                case "kana":
+                    n=1;
+                    break;
+                case "kanji":
+                    n=3;
+                    break;
+                case "word":
+                    n=2;
+            }
+            options.add(rightAnswer[n]);
+            options.add(optionB[n]);
+            options.add(optionC[n]);
+            translateAwnser = rightAnswer[n];
+
+            //setting buttons
             Collections.shuffle(options);
             option1Button.setText(options.get(0));
             option2Button.setText(options.get(1));
             option3Button.setText(options.get(2));
-
+            //preparing next scene
             checkTranslate = true;
             QuestionType = 3;
             viewFlipper.setDisplayedChild(2);
@@ -461,16 +538,52 @@ public class SlideActivity extends AppCompatActivity {
             String[] rightAnswer = seenMatrix.get(randomIndexes.get(0));
             String[] optionB = seenMatrix.get(randomIndexes.get(1));
             String[] optionC = seenMatrix.get(randomIndexes.get(2));
-
-            characteresAcertados.add(rightAnswer[0]);
-            // set question and answer options
+            charAcertado = seenMatrix.get(randomIndexes.get(0));
             questionTextView.setVisibility(View.GONE);
+
+            //Setting the options for the buttons
             List<String> options = new ArrayList<>();
-            options.add(rightAnswer[0]);
-            translateAwnser = options.get(0);
-            currentText = translateAwnser;
-            options.add(optionB[0]);
-            options.add(optionC[0]);
+            switch (displayType) {
+                case "kana":
+                case "kanji":
+                    options.add(rightAnswer[0]);
+                    translateAwnser = options.get(0);
+                    currentText = translateAwnser;
+                    options.add(optionB[0]);
+                    options.add(optionC[0]);
+                    break;
+                case "word":
+                    //ButtonA right
+                    List<String> ValidReading = new ArrayList<>();
+                    if(!rightAnswer[0].isEmpty())
+                        ValidReading.add(rightAnswer[0]);
+                    else
+                        ValidReading.add(rightAnswer[1]);
+                    Collections.shuffle(ValidReading);
+                    options.add(ValidReading.get(0));
+                    translateAwnser = options.get(0);
+                    currentText = translateAwnser;
+
+                    //ButtonB
+                    ValidReading = new ArrayList<>();
+                    if(!optionB[0].isEmpty())
+                        ValidReading.add(optionB[0]);
+                    else
+                        ValidReading.add(optionB[1]);
+                    Collections.shuffle(ValidReading);
+                    options.add(ValidReading.get(0));
+
+                    //ButtonC
+                    ValidReading = new ArrayList<>();
+                    if(!optionC[0].isEmpty())
+                        ValidReading.add(optionC[0]);
+                    else
+                        ValidReading.add(optionC[1]);
+                    Collections.shuffle(ValidReading);
+                    options.add(ValidReading.get(0));
+            }
+
+            //setting buttons
             Collections.shuffle(options);
             option1Button.setText(options.get(0));
             option2Button.setText(options.get(1));
@@ -486,6 +599,121 @@ public class SlideActivity extends AppCompatActivity {
             fillViewFlipper();
         }
     }
+    private void slideCaseFive() {//Kanji to Kana
+        if (displayType.equals("word") || displayType.equals("kana")){
+            currentState = getRandomState();
+            fillViewFlipper();
+            return;
+        }
+
+        if (currentIterations[5] < maxIterations[5]) {
+            List<Integer> randomIndexes = SlideLib.generateRandomIndexes(3, seenMatrix.size());
+            String[] rightAnswer = seenMatrix.get(randomIndexes.get(0)); // mudar nome para optionAcorrectAnswer
+            String[] optionB = seenMatrix.get(randomIndexes.get(1));
+            String[] optionC = seenMatrix.get(randomIndexes.get(2));
+            charAcertado = seenMatrix.get(randomIndexes.get(0));
+            //Setting the current text, the reference text for the answer, this case KANJI
+            questionTextView.setText(rightAnswer[0]);
+
+            //setting button info
+            List<String> options = new ArrayList<>();
+
+            List<String> ValidReading = new ArrayList<>();
+            if(!rightAnswer[1].isEmpty())
+                ValidReading.add(rightAnswer[1]);
+            if (!rightAnswer[2].isEmpty())
+                ValidReading.add(rightAnswer[2]);
+            Collections.shuffle(ValidReading);
+            options.add(ValidReading.get(0));
+            currentText = ValidReading.get(0);
+            translateAwnser = ValidReading.get(0);
+
+            ValidReading = new ArrayList<>();
+            if(!optionB[1].isEmpty())
+                ValidReading.add(optionB[1]);
+            if (!optionB[2].isEmpty())
+                ValidReading.add(optionB[2]);
+            Collections.shuffle(ValidReading);
+            options.add(ValidReading.get(0));
+
+            ValidReading = new ArrayList<>();
+            if(!optionC[1].isEmpty())
+                ValidReading.add(optionC[1]);
+            if (!optionC[2].isEmpty())
+                ValidReading.add(optionC[2]);
+            Collections.shuffle(ValidReading);
+            options.add(ValidReading.get(0));
+
+            //setting buttons
+            Collections.shuffle(options);
+            option1Button.setText(options.get(0));
+            option2Button.setText(options.get(1));
+            option3Button.setText(options.get(2));
+            //preparing next scene
+            checkTranslate = true;
+            QuestionType = 5;
+            viewFlipper.setDisplayedChild(2);
+        } else {
+            currentState = 0;
+            currentIterations[5] = 0;
+            fillViewFlipper();
+        }
+    }
+
+    private void slideCaseSix() {//Kana to Kanji
+        if (displayType.equals("word") || displayType.equals("kana")){
+            currentState = getRandomState();
+            fillViewFlipper();
+            return;
+        }
+
+        if (currentIterations[6] < maxIterations[6]) {
+            List<Integer> randomIndexes = SlideLib.generateRandomIndexes(3, seenMatrix.size());
+            String[] rightAnswer = seenMatrix.get(randomIndexes.get(0)); // mudar nome para optionAcorrectAnswer
+            String[] optionB = seenMatrix.get(randomIndexes.get(1));
+            String[] optionC = seenMatrix.get(randomIndexes.get(2));
+            charAcertado = seenMatrix.get(randomIndexes.get(0));
+            //Setting the current text, the reference text for the answer, this case KANJI
+            List<String> ValidReading = new ArrayList<>();
+            if (!rightAnswer[1].isEmpty()){
+                ValidReading.add(rightAnswer[1]);
+            }
+            if (!rightAnswer[2].isEmpty()){
+                ValidReading.add(rightAnswer[2]);
+            }
+            Collections.shuffle(ValidReading);
+            questionTextView.setText(ValidReading.get(0));
+            currentText = ValidReading.get(0); // Current needs to follow the JP text here
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                questionTextView.setAutoSizeTextTypeUniformWithConfiguration(12, 70, 1, TypedValue.COMPLEX_UNIT_DIP);
+
+            translateAwnser = rightAnswer[0];
+
+            //setting button info
+            List<String> options = new ArrayList<>();
+
+            options.add(rightAnswer[0]);
+            options.add(optionB[0]);
+            options.add(optionC[0]);
+
+            //setting buttons
+            Collections.shuffle(options);
+            option1Button.setText(options.get(0));
+            option2Button.setText(options.get(1));
+            option3Button.setText(options.get(2));
+            //preparing next scene
+            checkTranslate = true;
+            QuestionType = 6;
+            viewFlipper.setDisplayedChild(2);
+        } else {
+            currentState = 0;
+            currentIterations[6] = 0;
+            fillViewFlipper();
+        }
+    }
+
+
     private void setCharacterAndPhrase(int index) {
         characterInfo = matrix.get(index);
         String[] strArray;
@@ -499,17 +727,15 @@ public class SlideActivity extends AppCompatActivity {
                 characterTextView.setText(characterInfo[0]);
                 currentText = characterInfo[0];
 
-                strArray = characterInfo[1].split("-");
-                setTextViewText(readingATextView, "On Reading:\n", strArray);
+                strArray = characterInfo[1].split(" ");
+                setTextViewText(readingATextView, getResources().getText(R.string.on_reading)+"\n", strArray);
 
-                strArray = characterInfo[2].split("-");
-                setTextViewText(readingBTextView, "Kun Reading:\n", strArray);
+                strArray = characterInfo[2].split(" ");
+                setTextViewText(readingBTextView, getResources().getText(R.string.kun_reading)+"\n", strArray);
 
                 strArray = characterInfo[3].split("-");
-                setTextViewText(readingCTextView, "Translation:\n", strArray);
+                setTextViewText(readingCTextView, getResources().getText(R.string.translation)+"\n", strArray);
 
-                strArray = characterInfo[4].split("-");
-                setTextViewText(meaningTextView, "Example:\n", strArray);
                 break;
             case "word":
                 strArray = characterInfo[0].split("-");
@@ -520,10 +746,10 @@ public class SlideActivity extends AppCompatActivity {
                 currentText = characterInfo[0];
 
                 strArray = characterInfo[1].split("-");
-                setTextViewText(readingATextView, "Kanji Reading:\n", strArray);
+                setTextViewText(readingATextView, getResources().getText(R.string.kanji_reading)+"\n", strArray);
 
                 strArray = characterInfo[2].split("-");
-                setTextViewText(readingBTextView, "Translation:\n", strArray);
+                setTextViewText(readingBTextView, getResources().getText(R.string.translation)+"\n", strArray);
                 break;
         }
     }
@@ -545,14 +771,22 @@ public class SlideActivity extends AppCompatActivity {
             reachableStates.add(3);
         if (InformationRetrieve.getNumQuestionType4() > 0)
             reachableStates.add(4);
+        if (InformationRetrieve.getNumQuestionType5() > 0)
+            reachableStates.add(5);
+        if (InformationRetrieve.getNumQuestionType6() > 0)
+            reachableStates.add(6);
         Collections.shuffle(reachableStates);
         return reachableStates.get(0);
     }
 
-    void showAnwserDialogue(int v){
+    void showAnwserDialogue(int v, boolean result){
         Dialog dialog = new Dialog(this);
         dialog.setContentView(v);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        if (!result) {
+            TextView t = dialog.findViewById(R.id.dialog_txt);
+            t.setText(t.getText().toString() + ":\n" + translateAwnser);
+        }
         dialog.show();
         InformationRetrieve.addPoint(QuestionType);
     }

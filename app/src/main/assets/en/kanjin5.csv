@@ -1,103 +1,79 @@
-一,ひと, ひと(つ),ひと－つ,one,一人(ひとり)－alone
-二,に,ふた－つ,two,二人(ふたり)－couple
-三,さん,みっ－つ,three,三月(さんがつ)－March
-四,し,よん - よっ－つ,four, 四季(しき)－four seasons
-五,ご,いつ－つ,five,五分(ごふん)－five minutes
-六, ろく,むっ－つ - むい,six, 六(ろく)－six
-七,しち,なな－つ - なの - なぬ,seven,六(なな)－seven
-八,はち,やっ－つ - よう,eight,八(はち)－eight
-九,きゅう - く,ここの－つ,nine,九(きゅう)－nine
-十,じゅう,とお - とう,ten,十(じゅう)－ten
-百,ひゃく,もも,hundreds,百(ひゃく)－hundreds
-千,せん,ち,thousand,千(せん)－thousand
-万,ばん - まん,よろず,ten thousand - myriad,万(まん)－ten thousand
-父,ふ,ちち,father,お父さん(おとうさん)－father
-母,ぼ - も,はは,mother,お母さん(おかあさん)－mother
-友,ゆう,とも,friend,友だち(ともだち)－friend - 友人(ゆうじん)－friend
-女,じょ - にょ,おんな,woman-female,女性(じょせい)－woman - 女の子(おんなのこ)－girl
-男,だん - なん,おとこ - おのこ - お,man-male,男性(だんせい)－man - 男の子(おとこのこ)－boy
-人,じん, にん, ひと, person-person counter suffix,	日本人(にほんじん)－Japanese person
-子,し-す,こ-ね,child,子ども(こども)－child
-日,じつ-にち,ひ-か,sun-day-day counter suffix, 日曜日(にちようび)－Sunday - お日さま(おひさま)－the Sun
-月,がつ-げつ,つき,	month names-other times-moon-month,	月曜日(げつようび)－Monday-お月さま(おつきさま)－the Moon-一ヶ月(いっかげつ)－a month
-火,か,ひ-ほ,fire-light,火曜日(かようび)－Tuesday-花火(はなび)－fire works
-水,すい,みず,water,水曜日(すいようび)－Wednesday
-木,もく-ぼく,き,tree-wood,木曜日(もくようび)－Thursday
-金,きん-こん,かね,gold-metal-money, 金曜日(きんようび)－Friday-お金もち(おかねもち)－the rich
-土,ど-と,つち,earth-ground-soil, 土曜日(どようび)ーSaturday
-本,ほん,もと,root-book-slender object counter, 日本(にほん)－Japan-本屋(ほんや)－bookstore
-休,きゅう,やす－み-やす－む,	rest-vacation, 休けい(きゅうけい)－break-rest- 夏休み(なつやすみ)－summer vacation
-語,ご,かたり-かた－る,word-speech-language-narration-to tell-to speak,日本語(にほんご)－Japanese-英語(えいご)－English-物語(ものがたり)－tale
-年,ねん,とし,year-year counter,一年(いちねん)－a year-今年(ことし)－this year
-午,ご,うま,noon,正午(しょうご)－noon
-前,ぜん,まえ-さき,before-in front of previous,午前(ごぜん)－before noon-午前(ごぜん)morning
-後,ご-こう,うし－ろ-のち-あと,behind-after,午後(ごご)－afternoon
-時,じ,とき,time-hour counter,時間(じかん)－time
-間,かん-けん,あいだ-ま,interval-space-room-time, 三時間(さんじかん)－three hours
-毎,まい,ごと,every,毎日(まいにち)－everyday
-先,せん,さき,previous-ahead,先生(せんせい)－teacher
-今,こん-きん,いま,now-the present,今日(きょう)-今日(こんにち)－today
-何,か,なに-なん-いず－れ,what-how many,何日(なんにち)－which day
-上,じょう-しょう,うえ-うわ-あ－げる-あ－がる-のぼ－る-のぼ－せる-かみ,top-above-to raise-to rise-to go up,上手(じょおず)－skillful
-下,か-げ,した-しも-さ－げる-さ－がる-くだ－る-くだ－す-お－りる-お－ろす,bottom-under-down,下着(したぎ)－underwear
-左,さ,ひだり,left,左足(ひだりあし)－left foot
-右,ゆう-う,みぎ,right,右手(みぎて)－right hand
-北,ほく,きた,north,北海道(ほっかいどう)－Hokkaido
-南,なん,みなみ,south,南(みなみアメリカ)－South America
-東,とう,ひがし-ひんがし,east,東京(とうきょう)-Tokyo
-西,せい-さい,にし,west,関西(かんさい)－Kansai region
-外,がい-げ,うい-ほか-そと,outside-foreign-other,外国人(がいこくじん)－foreigner
-名,めい-みょう,な,name-fame-famous name,名前(なまえ)－name
-高,こう,たか－い-たか,high-costly-tall,高校(こうこう)－high school
-小,しょう,こお,ちい－さい,small-little,小学校(しょうがっこう)－elementary school
-中,ちゅう-じゅう,なか-あた－る,middle-center-within-inside,中学校(ちゅうがっこう)－junior high school
-大,だい-たい,おお－きい,great-big,大学(だいがく)－university-college-大阪(おおさか)－Osaka
-長,ちょう,なが－い,head of an organization-leader-long,長(ちょう)－chief
-半,はん,なか－ば,half,半分(はんぶん)－half
-分,ぶん-ふん-ぶ,わ－ける-わ－かる-わ－かつ,part share-minute counter-to divide separate-to understand,	三分(さんぶん)－three minutes
-学,がく,まな－ぶ,learning - science- to learn,学校(がっこう)－school
-校,こう,あぜ,school,学校(がっこう)－school
-生,せい-しょう,う－む-い－きる-なま,birth - life-to give birth - to live - raw,誕生日(たんじょうび)－birthday
-山,さん-せん,やま,mountain,富士山(ふじさん)－Mt. Fuji
-川,せん,かわ,river - stream,川上(かわかみ)－upstream
-白,はく-びゃく,しろ-しら-しろ－い,white,白(しろ)－white
-天,てん,あま-あめ,heaven - sky,天気(てんき)－weather
-雨,う,あま-あめ,rain,雨(あめ)－rain
-電,でん,いかずち,electricity - electric powered,電話(でんわ)－telephone-電車(でんしゃ)－train
-気,き,け,spirit-intention-mind-power-energy,空気(くうき)－air
-車,しゃ,くるま,wheel-vehicle-car,自転車(じてんしゃ)－bicycle
-国,こく-ごく,くに,country-nation,中国(ちゅうごく)－China
-円,えん,まる－い-まど－か-つぶ－ら,circle-yen(money),百円(ひゃくえん)－100 yen
-話,わ,はなし-はな－す,talk-topic-story-to talk,会話(かいわ)－conversation
-聞,ぶん-もん,き－く,to hear-to listen-to ask,新聞(しんぶん)－newspaper
-食,じき-しょく,く－う-た－べる,eating-meal-food,食べ物(たべもの)－food
-読,どく-とう,よ－む,to read,読書(どくしょ)－reading
-来,らい,く－る,to come,未来(みらい)－future
-書,しょ,か－く,book-document-to write,書道(しょどう)－calligraphy
-見,けん,み－る-み－せる,to see - to show,見(みる)to see
-行,ぎょう-こう-あん,い－く-ゆ－く,to go,旅行(りょこう)－journey
-出,しゅつ-すい,だ－す-いだ－す-で－る,to go out-leave,出口でぐち－exit
-入,にゅう-じゅ,い－る-はい－る,enter-to go in-to insert,入口(いりぐち)－entrance
-会,かい-え,あ－う,to meet,会社(かいしゃ)－company-corporation
-口,くち,こう－く,Entrance,入り口 (いりぐち)－Entrance-入口(いりぐち)－entrance
-古,ふる－い-ふる－す,こ,Old,古い(ふるい)－Old(not person)
-多,おお－い-まさ－に-まさ－る,た,Many-Numerous,多い(おおい)-Many-numerous-多分(たぶん)－Perhaps-probably
-安,やす－い-やす－まる-やす,あん,Cheap,安い(やすい)－Cheap,不安(ふあん)－Anxiety
-少,すく－ない-すこ－し,しょう,Small quantity-little-few,少なくとも(すくなくとも)－At least
-店,みせ-たな,てん,Store-shop,
-手,,,,
-新,,,,
-目,,,,
-社,,,,
-空,,,,
-立,,,,
-耳,,,,
-花,,,,
-言,,,,
-買,,,,
-足,,,,
-週,,,,
-道,,,,
-飲,,,,
-駅,,,,
-魚,,,,
+日,ニチ ジツ -,ひ -び,day- sun- Japan
+一,イチ イツ ヒト.,ひと-,one
+国,コク ク,,country
+人,ジン ニン -,ひと -り,person
+年,ネン ト,,year
+大,ダイ タイ -オオ.イ,おお- おお.きい,large- big
+十,ジュウ ジッ ジュッ,とお,ten
+二,ニ ジ フタタ.,ふた ふた.つ,two
+本,ホン モ,,book- present- main- true- real- counter for long things
+中,チュウ アタ.,なか うち,in- inside- middle- mean- center
+長,チョウ オ,なが.い,long- leader
+出,シュツ スイ イ.ダ,で.る -で だ.す -だ.す い.でる,exit- leave
+三,サン ゾウ ミッ.,み み.つ,three
+時,ジ -ド,とき,time- hour
+行,コウ ギョウ アン オコ.ナ,い.く ゆ.く -ゆ.き -ゆき -い.き -いき おこな.う,going- journey
+見,ケン,み.る み.える み.せる,see- hopes- chances- idea- opinion- look at- visible
+月,ゲツ ガツ ツ,,month- moon
+後,ゴ コウ オク.レ,のち うし.ろ うしろ あと,behind- back- later
+前,ゼン -マ,まえ,in front- before
+生,セイ ショウ -,い.きる い.かす い.ける う.まれる う.まれ うまれ う.む お.う は.える は.やす き なま なま- な.る,life- genuine- birth
+五,ゴ イツ.,いつ,five
+間,カン ケン,あいだ ま あい,interval- space
+上,ジョウ ショウ シャン ヨ.,うえ -うえ うわ- かみ あ.げる -あ.げる あ.がる -あ.がる あ.がり -あ.がり のぼ.る のぼ.り のぼ.,above- up
+東,トウ ヒガ,,east
+四,シ ヨ,よ よ.つ よっ.つ,four
+今,コン キン イ,,now
+金,キン コン ゴン -ガ,かね かな-,gold
+九,キュウ ク ココノ.,ここの,nine
+入,ニュウ ジュ ハイ.,い.る -い.る -い.り い.れる -い.れ,enter- insert
+学,ガク マナ.,,study- learning- science
+高,コウ タカ.メ,たか.い たか -だか たか.まる,tall- high- expensive
+円,エン マロ.ヤ,まる.い まる まど まど.か,circle- yen- round
+子,シ ス ツ,こ -こ,child- sign of the rat- 11PM-1AM- first sign of Chinese zodiac
+外,ガイ ゲ,そと ほか はず.す はず.れる と,outside
+八,ハチ ヨ,や や.つ やっ.つ,eight
+六,ロク リク ム,む む.つ むっ.つ,six
+下,カ ゲ オ.リ,した しも もと さ.げる さ.がる くだ.る くだ.り くだ.す -くだ.す くだ.さる お.ろす,below- down- descend- give- low- inferior
+来,ライ タイ,く.る きた.る きた.す き.たす き.たる き,come- due- next- cause- become
+気,キ ケ,いき,spirit- mind
+小,ショウ,ちい.さい こ- お- さ,little- small
+七,シチ ナ,なな なな.つ,seven
+山,サン セン ヤ,,mountain
+話,ワ,はな.す はなし,tale- talk
+女,ジョ ニョ ニョウ,おんな,woman- female
+北,ホク キ,,north
+午,ゴ,うま,noon- sign of the horse- 11AM-1PM- seventh sign of Chinese zodiac
+百,ヒャク ビャク モ,,hundred
+書,ショ -ガ,か.く -が.き,write
+先,セン マ.,さき,before- ahead- previous- future- precedence
+名,メイ ミョウ -,な,name- noted- distinguished- reputation
+川,セン カ,,stream- river
+千,セン,,thousand
+水,スイ,みず みず,water
+半,ハン ナカ.,,half- middle- odd number- semi-- part-
+男,ダン ナン,おとこ,male
+西,セイ サイ ス ニ,,west- Spain
+電,デン,,electricity
+校,コウ キョ,,exam- school- printing- proof- correction
+語,ゴ,かた.る かた.らう,word- speech- language
+土,ド ト ツ,,soil- earth- ground- Turkey
+木,ボク モク,き こ,tree- wood
+聞,ブン モン,き.く き.こえる,hear- ask- listen
+食,ショク ジキ ハ.,く.う く.らう た.べる,eat- food
+車,シャ クル,,car
+何,カ,なに なん なに- なん,what
+南,ナン ナ ミナ,,south
+万,マン バン ヨロ,,ten thousand
+毎,マイ -ゴト.,ごと,every
+白,ハク ビャク シロ.,しろ しら-,white
+天,テン,あまつ あめ あま,heavens- sky- imperial
+母,ボ,はは も,mama- mother
+火,カ,ひ -び ほ-,fire
+右,ウ ユウ ミ,,right
+読,ドク トク トウ -ヨ.,よ.む,read
+友,ユウ ト,,friend
+左,サ シャ ヒダ,,left
+休,キュウ,やす.む やす.まる やす.める,rest- day off- retire- sleep
+父,フ,ちち,father
+雨,ウ,あめ あま- -さめ,rain

@@ -31,9 +31,9 @@
             android:backgroundTint="@color/menu_icon_color"
             app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/baseline_keyboard_arrow_left_24"
-            android:contentDescription="return_page" />
+            android:contentDescription="@string/return_page" />
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="@color/menu_icon_color"
@@ -42,7 +42,7 @@
             android:textSize="30sp"
             android:fontFamily="cursive"
             android:textColorHint="@color/text_title_color"
-            android:text="Settings"
+            android:text="@string/settings"
             />
 
         <androidx.appcompat.widget.Toolbar
@@ -85,7 +85,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                 <TextView
-                    android:text="Radomize Slide:"
+                    android:text="@string/radomize_slide"
                     android:textSize="16sp"
                     android:layout_gravity="center"
                     android:textAlignment="center"
@@ -94,17 +94,15 @@
                     android:padding="8dp"
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                      android:layout_weight="1"
                     />
-
                 <CheckBox
                     android:id="@+id/edit_text1"
                     android:padding="8dp"
                     android:layout_height="75dp"
                     android:layout_width="75dp"
-                    style="@style/AppCheckBoxStyle"
-                    />
+                    style="@style/AppCheckBoxStyle"/>
                 </LinearLayout>
 
                 <View
@@ -117,7 +115,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                 <TextView
-                    android:text="Recomendation:"
+                    android:text="@string/recomendation"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -127,7 +125,7 @@
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
+                    android:layout_width="0dp"/>
 
                 <CheckBox
                     android:id="@+id/edit_text2"
@@ -146,7 +144,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                 <TextView
-                    android:text="Only Exercices:"
+                    android:text="@string/only_exercices"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -156,7 +154,7 @@
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
+                    android:layout_width="0dp"/>
 
                 <CheckBox
                     android:id="@+id/edit_text0"
@@ -175,7 +173,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                 <TextView
-                    android:text="Only Slides:"
+                    android:text="@string/only_slides"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -185,7 +183,7 @@
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
+                    android:layout_width="0dp"/>
 
                 <CheckBox
                     android:id="@+id/edit_text9"
@@ -194,6 +192,7 @@
                     android:layout_width="75dp"
                     style="@style/AppCheckBoxStyle"/>
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
@@ -203,43 +202,31 @@
                     android:layout_height="75dp"
                     android:layout_row="0"
                     android:background="@drawable/border">
-                <TextView
-                    android:text="Clean Recomendations:"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:padding="8dp"
-                   android:textColor="@color/text_color"
-                    android:layout_height="75dp"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
-                <LinearLayout
-                    android:layout_height="50dp"
-                    android:layout_width="50dp"
-                    android:layout_margin="10dp"
-                    android:padding="10dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:background="@drawable/semi_circle_shape"
-                    android:backgroundTint="@color/question_wrong_icon"
-                    >
+                    <TextView
+                        android:text="@string/only_favorite_settings"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="75dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"/>
 
-                <ImageButton
-                    android:id="@+id/edit_text3"
-                    android:backgroundTint="@color/menu_icon_color"
-                    android:background="@drawable/baseline_highlight_off_24"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:contentDescription="clean_recomendations" />
-                </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/edit_text10"
+                        android:padding="8dp"
+                        android:layout_height="75dp"
+                        android:layout_width="75dp"
+                        style="@style/AppCheckBoxStyle"/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
                     />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -247,7 +234,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                 <TextView
-                    android:text="Slide Count"
+                    android:text="@string/slide_count"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -257,7 +244,7 @@
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
+                    android:layout_width="0dp"/>
 
                 <EditText
                     android:id="@+id/edit_text4"
@@ -266,7 +253,6 @@
                     android:textColor="@color/text_color"
                     android:inputType="numberSigned|numberDecimal"
                     android:autofillHints="0"
-                    android:text="0"
                     android:layout_height="75dp"
                     android:layout_width="75dp"/>
                 </LinearLayout>
@@ -280,7 +266,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                 <TextView
-                    android:text="Drawing Count:"
+                    android:text="@string/drawing_count"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -290,7 +276,7 @@
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
+                    android:layout_width="0dp"/>
 
                 <EditText
                     android:id="@+id/edit_text5"
@@ -299,7 +285,6 @@
                     android:textColor="@color/text_color"
                     android:inputType="numberSigned|numberDecimal"
                     android:autofillHints="0"
-                    android:text="0"
                     android:layout_height="75dp"
                     android:layout_width="75dp"/>
                 </LinearLayout>
@@ -313,7 +298,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                 <TextView
-                    android:text="Pick the Kana/Romaji:"
+                    android:text="@string/pick_the_kana_romaji"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -323,7 +308,7 @@
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
+                    android:layout_width="0dp"/>
 
                 <EditText
                     android:id="@+id/edit_text6"
@@ -332,7 +317,6 @@
                     android:backgroundTint="@color/text_color"
                     android:inputType="numberSigned|numberDecimal"
                     android:autofillHints="0"
-                    android:text="0"
                     android:layout_height="75dp"
                     android:layout_width="75dp"/>
                 </LinearLayout>
@@ -347,7 +331,7 @@
                     android:background="@drawable/border">
 
                 <TextView
-                    android:text="Pick the Kanji:"
+                    android:text="@string/pick_the_kanji"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -357,7 +341,7 @@
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
+                    android:layout_width="0dp"/>
 
                 <EditText
                     android:id="@+id/edit_text7"
@@ -366,7 +350,6 @@
                     android:backgroundTint="@color/text_color"
                     android:inputType="numberSigned|numberDecimal"
                     android:autofillHints="0"
-                    android:text="0"
                     android:layout_height="75dp"
                     android:layout_width="75dp"/>
                 </LinearLayout>
@@ -380,7 +363,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                 <TextView
-                    android:text="Listening Count:"
+                    android:text="@string/listening_count"
                     android:layout_gravity="center"
                     android:textAlignment="center"
                     android:gravity="center"
@@ -390,7 +373,7 @@
                     android:textColor="@color/text_color"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"/>
+                    android:layout_width="0dp"/>
 
                 <EditText
                     android:id="@+id/edit_text8"
@@ -399,7 +382,6 @@
                     android:textColor="@color/text_color"
                     android:inputType="numberSigned|numberDecimal"
                     android:autofillHints="0"
-                    android:text="0"
                     android:layout_height="75dp"
                     android:layout_width="75dp"/>
                 </LinearLayout>
@@ -413,7 +395,7 @@
                     android:layout_row="0"
                     android:background="@drawable/border">
                     <TextView
-                        android:text="Only Favorite:"
+                        android:text="@string/Kanji_to_kana"
                         android:layout_gravity="center"
                         android:textAlignment="center"
                         android:gravity="center"
@@ -423,15 +405,82 @@
                         android:textColor="@color/text_color"
                         android:layout_height="75dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content"/>
+                        android:layout_width="0dp"/>
 
-                    <CheckBox
-                        android:id="@+id/edit_text10"
-                        android:padding="8dp"
+                    <EditText
+                        android:id="@+id/edit_text11"
+                        android:backgroundTint="@color/text_color"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_color"
+                        android:inputType="numberSigned|numberDecimal"
+                        android:autofillHints="0"
                         android:layout_height="75dp"
-                        android:layout_width="75dp"
-                        style="@style/AppCheckBoxStyle"/>
+                        android:layout_width="75dp"/>
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_row="0"
+                    android:background="@drawable/border">
+                    <TextView
+                        android:text="@string/Kana_to_kanji"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="75dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text12"
+                        android:backgroundTint="@color/text_color"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_color"
+                        android:inputType="numberSigned|numberDecimal"
+                        android:autofillHints="0"
+                        android:layout_height="75dp"
+                        android:layout_width="75dp"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    />
+                <Button
+                    style="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded"
+                    android:layout_row="0"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:id="@+id/edit_text3"
+                    android:text="@string/clean_recomendations_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/simple_button_color"
+                    android:textColor="@color/text_title_color"
+                    android:layout_height="60dp"
+                    android:layout_width="200dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    />
+                <TextView
+                    android:text="@string/credits"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:paddingVertical="100dp"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
             </GridLayout>
         </RelativeLayout>
 

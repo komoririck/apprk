@@ -4,6 +4,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.transition.Slide;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -77,8 +79,10 @@ public class WordListActivity extends AppCompatActivity implements WordAdapter.O
         if (!searchText.isEmpty()) {
             List<String[]> tmpMatrix = new ArrayList<>();
             for(String[] s : matrix){
-                if(s[0].toLowerCase(Locale.ROOT).contains(searchText) || s[1].toLowerCase(Locale.ROOT).contains(searchText) || s[2].toLowerCase(Locale.ROOT).contains(searchText))
-                    tmpMatrix.add(s);
+                if(s.length > 2) {
+                    if (s[0].toLowerCase(Locale.ROOT).contains(searchText) || s[1].toLowerCase(Locale.ROOT).contains(searchText) || s[2].toLowerCase(Locale.ROOT).contains(searchText))
+                        tmpMatrix.add(s);
+                }
             }
             return tmpMatrix;
         }
@@ -86,11 +90,13 @@ public class WordListActivity extends AppCompatActivity implements WordAdapter.O
     }
 
     public List<String[]> favoriteFilter(List<String[]> list){
-        SlideLib.debugLog(InformationRetrieve.getFavoritedWord());
         List<String[]> tempFavoritedList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            if (InformationRetrieve.hasFavoritedWord(list.get(i)[0]+"$"+list.get(i)[2]))
-                tempFavoritedList.add(list.get(i));
+            if (list.get(i).length >2) {
+                if (InformationRetrieve.hasFavoritedWord(list.get(i)[0] + "$" + list.get(i)[2])){
+                    tempFavoritedList.add(list.get(i));
+                }
+            }
         }
         return tempFavoritedList;
     }

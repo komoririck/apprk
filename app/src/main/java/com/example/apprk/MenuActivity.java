@@ -55,7 +55,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 View child = mGridLayout.getChildAt(i);
                 if (child instanceof AppCompatButton) {
                     if (child.getBackground().equals(selected)) {
-                        String text = (String) ((AppCompatButton) child).getText();
+                        String text = child.getTag().toString();
                         lettersToShow.add(text);
                     }
                 }
@@ -96,13 +96,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MenuActivity.this, CharacterListActivity.class);
             startActivity(intent);
         });
-
-        findViewById(R.id.button7).setOnClickListener(null);
-        findViewById(R.id.button7).setEnabled(false);
-        findViewById(R.id.button12).setOnClickListener(null);
-        findViewById(R.id.button12).setEnabled(false);
-        findViewById(R.id.button13).setOnClickListener(null);
-        findViewById(R.id.button13).setEnabled(false);
+        findViewById(R.id.button16).setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, KanaListActivity.class);
+            startActivity(intent);
+        });
     }
 
 

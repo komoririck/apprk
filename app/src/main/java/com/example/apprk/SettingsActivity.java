@@ -9,12 +9,16 @@ package com.example.apprk;
 
         import androidx.appcompat.app.AppCompatActivity;
 
+        import java.util.ArrayList;
+
 public class SettingsActivity extends AppCompatActivity {
     EditText text4;
     EditText text5;
     EditText text6;
     EditText text7;
     EditText text8;
+    EditText text11;
+    EditText text12;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -27,7 +31,6 @@ public class SettingsActivity extends AppCompatActivity {
             Intent intent1 = new Intent(SettingsActivity.this, MenuActivity.class);
             startActivity(intent1);
         });
-
 
         CheckBox questionOnly = findViewById(R.id.edit_text0);
         questionOnly.setChecked(InformationRetrieve.isOnlyQuestions());
@@ -62,23 +65,29 @@ public class SettingsActivity extends AppCompatActivity {
         onlyFavorite.setChecked(InformationRetrieve.isOnlyFavorite());
         onlyFavorite.setOnClickListener(v -> InformationRetrieve.setOnlyFavorite(onlyFavorite.isChecked()));
 
-        findViewById(R.id.edit_text3).setOnClickListener(v -> InformationRetrieve.setcharacteresAcertados(new String[0]));
+        findViewById(R.id.edit_text3).setOnClickListener(v -> InformationRetrieve.setCharacteresAcertados(new ArrayList<>()));
 
         text4 = findViewById(R.id.edit_text4);
         text5 = findViewById(R.id.edit_text5);
         text6 = findViewById(R.id.edit_text6);
         text7 = findViewById(R.id.edit_text7);
         text8 = findViewById(R.id.edit_text8);
+        text11 = findViewById(R.id.edit_text11);
+        text12 = findViewById(R.id.edit_text12);
         text4.setText(String.valueOf(InformationRetrieve.getNumSlides()));
         text5.setText(String.valueOf(InformationRetrieve.getNumQuestionType1()));
         text6.setText(String.valueOf(InformationRetrieve.getNumQuestionType2()));
         text7.setText(String.valueOf(InformationRetrieve.getNumQuestionType3()));
         text8.setText(String.valueOf(InformationRetrieve.getNumQuestionType4()));
+        text11.setText(String.valueOf(InformationRetrieve.getNumQuestionType5()));
+        text12.setText(String.valueOf(InformationRetrieve.getNumQuestionType6()));
         setupEditText(text4);
         setupEditText(text5);
         setupEditText(text6);
         setupEditText(text7);
         setupEditText(text8);
+        setupEditText(text11);
+        setupEditText(text12);
 
     }
     private void setupEditText(EditText editText) {
@@ -108,6 +117,10 @@ public class SettingsActivity extends AppCompatActivity {
                     InformationRetrieve.setNumQuestionType3(value);
                 } else if (editText.getId() == R.id.edit_text8) {
                     InformationRetrieve.setNumQuestionType4(value);
+                } else if (editText.getId() == R.id.edit_text11) {
+                    InformationRetrieve.setNumQuestionType5(value);
+                } else if (editText.getId() == R.id.edit_text12) {
+                    InformationRetrieve.setNumQuestionType6(value);
                 }
             }
         });

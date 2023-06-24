@@ -29,7 +29,7 @@
             android:backgroundTint="@color/menu_icon_color"
             app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/baseline_keyboard_arrow_left_24"
-            android:contentDescription="return_page" />
+            android:contentDescription="@string/return_page" />
 
         <EditText
             android:layout_marginHorizontal="20dp"
@@ -38,13 +38,14 @@
             android:layout_height="65dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:hint="Search"
+            android:hint="@string/search"
             android:textColorHint="@color/menu_icon_color"
             android:textColor="@color/menu_icon_color"
             android:backgroundTint="@color/menu_icon_color"
             android:drawableTint="@color/menu_icon_color"
             android:drawableEnd="@drawable/baseline_search_24"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:autofillHints="" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -62,7 +63,7 @@
         android:layout_margin="25dp"
         android:id="@+id/view_flipper"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="0dp"
         android:inAnimation="@android:anim/slide_in_left"
         android:outAnimation="@android:anim/slide_out_right"
         app:layout_constraintTop_toBottomOf="@id/toolBar"

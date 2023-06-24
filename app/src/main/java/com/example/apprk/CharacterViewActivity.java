@@ -25,7 +25,6 @@ public class CharacterViewActivity extends AppCompatActivity {
     private TextView readingATextView;
     private TextView readingBTextView;
     private TextView readingCTextView;
-    private TextView meaningTextView;
 
     private List<String[]> matrix = new ArrayList<>();
     private ViewFlipper viewFlipper;
@@ -95,7 +94,6 @@ public class CharacterViewActivity extends AppCompatActivity {
         readingATextView = findViewById(R.id.kana_text_view);
         readingBTextView = findViewById(R.id.transl_text_view);
         readingCTextView = findViewById(R.id.translate_text_view);
-        meaningTextView = findViewById(R.id.example_translate_text_view);
 
         star = findViewById(R.id.star_image_button);
         starOn = ContextCompat.getDrawable(this, R.drawable.baseline_star_24);
@@ -140,17 +138,15 @@ public class CharacterViewActivity extends AppCompatActivity {
         characterTextView.setText(characterInfo[0]);
         currentText = characterInfo[0];
 
-        String[] strArray = characterInfo[1].split("-");
-        setTextViewText(readingATextView, "On Reading:\n", strArray);
+        String[] strArray = characterInfo[1].split(" ");
+        setTextViewText(readingATextView, getResources().getText(R.string.on_reading)+"\n", strArray);
 
-        strArray = characterInfo[2].split("-");
-        setTextViewText(readingBTextView, "Kun Reading:\n", strArray);
+        strArray = characterInfo[2].split(" ");
+        setTextViewText(readingBTextView, getResources().getText(R.string.kun_reading)+"\n", strArray);
 
         strArray = characterInfo[3].split("-");
-        setTextViewText(readingCTextView, "Translation:\n", strArray);
+        setTextViewText(readingCTextView, getResources().getText(R.string.translation)+"\n", strArray);
 
-        strArray = characterInfo[4].split("-");
-        setTextViewText(meaningTextView, "Example:\n", strArray);
     }
 
     private void setTextViewText(TextView textView, String title, String[] strArray) {

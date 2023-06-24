@@ -137,10 +137,10 @@ public class WordViewActivity extends AppCompatActivity {
         currentText = characterInfo[0];
 
         String[] strArray = characterInfo[1].split("-");
-        setTextViewText(readingATextView, "Writing:\n", strArray);
+        setTextViewText(readingATextView, getResources().getText(R.string.writing)+"\n", strArray);
 
         strArray = characterInfo[2].split("-");
-        setTextViewText(readingBTextView, "Translate:\n", strArray);
+        setTextViewText(readingBTextView, getResources().getText(R.string.translation)+"\n", strArray);
     }
 
     private void setTextViewText(TextView textView, String title, String[] strArray) {

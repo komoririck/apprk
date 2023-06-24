@@ -18,22 +18,22 @@ import java.util.Map;
 
 public class SlideLib {
 
-    public static ArrayList<String> removeOutsideNorm(ArrayList<String> inputList, List<String> norm) {
-        norm.addAll(inputList);
+    public static ArrayList<String[]> removeOutsideNorm(List<String[]> inputList, List<String[]> norm) {
         double thresholdFactor = 1.5;
         // Find the norm
-        Map<String, Integer> countMap = new HashMap<>();
-        for (String s : norm) {
+        Map<String[], Integer> countMap = new HashMap<>();
+        for (String[] s : norm) {
             countMap.put(s, countMap.getOrDefault(s, 0) + 1);
         }
+
         double totalCount = norm.size();
         double normThreshold = totalCount / countMap.size();
 
         normThreshold *= thresholdFactor;
 
         // Filter out elements outside the norm
-        ArrayList<String> outputList = new ArrayList<>();
-        for (String s : inputList) {
+        ArrayList<String[]> outputList = new ArrayList<>();
+        for (String[] s : inputList) {
             if (countMap.containsKey(s) && countMap.get(s) > normThreshold) {
                 countMap.remove(s); // Remove the element from the norm once it's outside the norm
             } else {
@@ -41,18 +41,6 @@ public class SlideLib {
             }
         }
         return outputList;
-    }
-
-    public List<String[]> updateList (List<String[]> matrizInicial, ArrayList<String> MatIniChar, List<String> charAcertados){
-        MatIniChar = removeOutsideNorm(MatIniChar, charAcertados);
-        //turning the matrix into a List and saving it
-        List<String[]> tempM = new ArrayList<>();
-        for (String[] array : matrizInicial) {
-            if(MatIniChar.contains(array[0])){
-                tempM.add(array);
-            }
-        }
-        return tempM;
     }
     public boolean isBlack(int pixel) {
         return Color.red(pixel) == 0 && Color.green(pixel) == 0 && Color.blue(pixel) == 0;
@@ -141,6 +129,9 @@ public class SlideLib {
         List<Integer> allIndexes = new ArrayList<>();
         for (int i = 0; i < maxIndex; i++) {
             allIndexes.add(i);
+        }
+        while (allIndexes.size() < 3){// this prevent the buttons from receive less than 3 options if the user setup to < 3 slides
+            allIndexes.add(0);
         }
         Collections.shuffle(allIndexes);
         return allIndexes.subList(0, numIndexes);

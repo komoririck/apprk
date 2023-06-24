@@ -14,6 +14,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class InformationRetrieve {
+    //reminder for myself and if someone read
+    //i'm saving and checking a loot of stuff as string, because i started the project without indexing the lists of words
+        //A better(future) aproach would be generate a index for each list, them, instead of comparing/saving frases we can just use the index
+            //this would fix the problem with the wordlist class where you need to take extra care to the returned word to be the rightone
+            //also will be way more efficient
     private static final String PROGRESS_FILE = "progress.ser";
     private static String LANGUAGE = null;
     private static  boolean randomizer;
@@ -29,7 +34,7 @@ public class InformationRetrieve {
     private static  int numCorrectQuestionType2;
     private static  int numCorrectQuestionType3;
     private static  int numCorrectQuestionType4;
-    private static  String[] characteresAcertados;
+    private static  List<String[]> characteresAcertados;
     private static  boolean kanjiMenuItemN5;
     private static  boolean kanjiMenuItemN4;
     private static  boolean kanjiMenuItemN3;
@@ -45,6 +50,10 @@ public class InformationRetrieve {
     private static  boolean favoritedStatus;
     private static  boolean onlyFavorite;
     private static Context context;
+    private static  int numQuestionType5;
+    private static  int numQuestionType6;
+    private static  int numCorrectQuestionType5;
+    private static  int numCorrectQuestionType6;
 
     public InformationRetrieve(Context context) {
         InformationRetrieve.context = context;
@@ -87,6 +96,10 @@ public class InformationRetrieve {
             out.writeObject(favoritedkanji);
             out.writeBoolean(favoritedStatus);
             out.writeBoolean(onlyFavorite);
+            out.writeInt(numQuestionType5);
+            out.writeInt(numQuestionType6);
+            out.writeInt(numCorrectQuestionType5);
+            out.writeInt(numCorrectQuestionType6);
             out.close();
             fileOut.close();
             System.out.println("Progress saved to file.");
@@ -111,7 +124,7 @@ public class InformationRetrieve {
             numCorrectQuestionType2 = in.readInt();
             numCorrectQuestionType3 = in.readInt();
             numCorrectQuestionType4 = in.readInt();
-            characteresAcertados = (String[]) in.readObject();
+            characteresAcertados = (List<String[]>) in.readObject();
             kanjiMenuItemN5 = in.readBoolean();
             kanjiMenuItemN4 = in.readBoolean();
             kanjiMenuItemN3 = in.readBoolean();
@@ -126,6 +139,10 @@ public class InformationRetrieve {
             favoritedkanji = (List<String>) in.readObject();
             favoritedStatus = in.readBoolean();
             onlyFavorite = in.readBoolean();
+            numQuestionType5 = in.readInt();
+            numQuestionType6 = in.readInt();
+            numCorrectQuestionType6 = in.readInt();
+            numCorrectQuestionType6 = in.readInt();
             in.close();
             fileIn.close();
             System.out.println("Progress loaded from file.");
@@ -146,11 +163,15 @@ public class InformationRetrieve {
         numQuestionType2 = 3;
         numQuestionType3 = 3;
         numQuestionType4 = 3;
+        numQuestionType5 = 3;
+        numQuestionType6 = 3;
         numCorrectQuestionType1 = 0;
         numCorrectQuestionType2 = 0;
         numCorrectQuestionType3 = 0;
         numCorrectQuestionType4 = 0;
-        characteresAcertados = new String[0];
+        numCorrectQuestionType5 = 0;
+        numCorrectQuestionType6 = 0;
+        characteresAcertados = new ArrayList<>();
         kanjiMenuItemN5 = true;
         kanjiMenuItemN4 = true;
         kanjiMenuItemN3 = true;
@@ -183,6 +204,12 @@ public class InformationRetrieve {
                 break;
             case 4:
                 numCorrectQuestionType4++;
+                break;
+            case 5:
+                numCorrectQuestionType5++;
+                break;
+            case 6:
+                numCorrectQuestionType6++;
                 break;
         }
         saveProgress();
@@ -220,10 +247,7 @@ public class InformationRetrieve {
         InformationRetrieve.numQuestionType4 = numQuestionType4;
         saveProgress();
     }
-    public static void setcharacteresAcertados(String[] characteresAcertados) {
-        InformationRetrieve.characteresAcertados = characteresAcertados;
-        saveProgress();
-    }
+
     public static boolean isRandomizer() {
         return randomizer;
     }
@@ -378,14 +402,6 @@ public class InformationRetrieve {
         saveProgress();
     }
 
-    public static String[] getCharacteresAcertados() {
-        return characteresAcertados;
-    }
-
-    public static void setCharacteresAcertados(String[] characteresAcertados) {
-        InformationRetrieve.characteresAcertados = characteresAcertados;
-        saveProgress();
-    }
 
     public static boolean hasFavoritedWord(String favoritedString) {
         return favoritedWord.contains(favoritedString);
@@ -444,5 +460,57 @@ public class InformationRetrieve {
 
     public static void setLANGUAGE(String LANGUAGE) {
         InformationRetrieve.LANGUAGE = LANGUAGE;
+    }
+
+    public static int getNumQuestionType5() {
+        return numQuestionType5;
+    }
+
+    public static void setNumQuestionType5(int numQuestionType5) {
+        InformationRetrieve.numQuestionType5 = numQuestionType5;
+        saveProgress();
+    }
+
+    public static int getNumQuestionType6() {
+        return numQuestionType6;
+    }
+
+    public static void setNumQuestionType6(int numQuestionType6) {
+        InformationRetrieve.numQuestionType6 = numQuestionType6;
+        saveProgress();
+    }
+
+    public static int getNumCorrectQuestionType5() {
+        return numCorrectQuestionType5;
+    }
+
+    public static void setNumCorrectQuestionType5(int numCorrectQuestionType5) {
+        InformationRetrieve.numCorrectQuestionType5 = numCorrectQuestionType5;
+        saveProgress();
+    }
+
+    public static int getNumCorrectQuestionType6() {
+        return numCorrectQuestionType6;
+    }
+
+    public static void setNumCorrectQuestionType6(int numCorrectQuestionType6) {
+        InformationRetrieve.numCorrectQuestionType6 = numCorrectQuestionType6;
+        saveProgress();
+    }
+
+    public static List<String[]> getCharacteresAcertados() {
+        return characteresAcertados;
+    }
+
+    public static void setCharacteresAcertados(List<String[]> characteresAcertados) {
+        if (characteresAcertados.size() > 2000) {
+            List<String[]> reSizeVar = new ArrayList<>();
+            for (int i = 700; i < characteresAcertados.size(); i++)
+                reSizeVar.add(characteresAcertados.get(i));
+            InformationRetrieve.characteresAcertados = reSizeVar;
+        } else {
+            InformationRetrieve.characteresAcertados = characteresAcertados;
+        }
+        saveProgress();
     }
 }

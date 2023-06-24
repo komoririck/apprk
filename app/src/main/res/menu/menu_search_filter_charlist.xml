@@ -2,38 +2,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/item1"
-        android:title="N1"
+        android:title="@string/n1"
         android:checkable="true"
         android:checked="true"
-        android:visible="false"
         app:showAsAction="never" />
     <item
         android:id="@+id/item2"
-        android:title="N2"
+        android:title="@string/n2"
         android:checkable="true"
         android:checked="true"
         app:showAsAction="never" />
     <item
         android:id="@+id/item3"
-        android:title="N3"
+        android:title="@string/n3"
         android:checkable="true"
         android:checked="true"
         app:showAsAction="never" />
     <item
         android:id="@+id/item4"
-        android:title="N4"
+        android:title="@string/n4"
         android:checkable="true"
         android:checked="true"
         app:showAsAction="never" />
     <item
         android:id="@+id/item5"
-        android:title="N5"
+        android:title="@string/n5"
         android:checkable="true"
         android:checked="true"
         app:showAsAction="never" />
     <item
         android:id="@+id/item6"
-        android:title="Only Favorite"
+        android:title="@string/only_favorite"
         android:checkable="true"
         android:checked="true"
         app:showAsAction="never" />

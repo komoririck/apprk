@@ -151,7 +151,6 @@ public class CharacterListActivity extends AppCompatActivity implements Characte
             matrixFilter = setupList();
         
         characterAdapter.setData(filterCharacter(matrixFilter));
-        
         return super.onOptionsItemSelected(item);
     }
     List<String[]> setupList(){
