@@ -61,14 +61,15 @@
     <string name="dictionary">Dictionary</string>
     <string name="writing">Writing:</string>
     <string name="credits">
-        E aí, tudo bem? Espero que este aplicativo seja útil de alguma forma para você. Eu o criei porque sentia falta desse tipo de app para me ajudar nos estudos. Ele é simples, mas pode te auxiliar a estudar quando você tiver um tempinho livre, como no transporte público.
+        Hope this app is useful in some way for you. I created it because I missed this kind of app to help me with my studies. It\'s simple, but it can help you study when you have a little free time, like on public transport.
 
-Você pode encontrar o código fonte do projeto no <a href="https://github.com/komoririck/remembering-japanese">Github</a> e utilizá-lo da maneira que desejar, seja para fins comerciais ou não.
+You can find the project's source code on <a href="https://github.com/komoririck/remembering-japanese">Github</a> and use it any way you like, commercially or otherwise.
 
-É importante ressaltar que o crédito pelas planilhas utilizadas como base de dados pertence ao <a href="http://www.tanos.co.uk/jlpt/">Jonathan Waller</a>. Fiz algumas alterações para o aplicativo e também traduzi para o português brasileiro, mas o mérito das tabelas é dele.
+It is important to note that credit for the spreadsheets used as the database belongs to <a href="http://www.tanos.co.uk/jlpt/">Jonathan Waller</a>. I made some changes to the application and also translated it into Brazilian Portuguese, but the tables are credited to him.
 
-Se o app te ajudar e quiser retribuir, se puder se inscrever no meu <a href="https://www.youtube.com/@rickkomorich/videos">Canal</a> ajudaria bastante.
+If the app helps you and you want to give back, subscribing to my <a href="https://www.youtube.com/@rickkomorich/videos">Channel</a> would really help.
 
-<a href="linktr.ee/rickkomori">Contato</a>
+<a href="linktr.ee/rickkomori">Contact-me</a>
     </string>
+
 </resources>
