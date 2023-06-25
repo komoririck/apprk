@@ -473,11 +473,9 @@
                 <TextView
                     android:text="@string/credits"
                     android:layout_gravity="center"
-                    android:textAlignment="center"
                     android:gravity="center"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:paddingVertical="100dp"
                     android:textColor="@color/text_color"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"/>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">apprk</string>
+    <string name="app_name">Remembering Japanese</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="return_page">Return Page</string>
@@ -39,7 +39,7 @@
     <string name="right_awnser">Right</string>
     <string name="Logo_Text">RK</string>
     <string name="welcome">Welcome!</string>
-    <string name="dev_name">Rk</string>
+    <string name="dev_name"><a href="https://www.youtube.com/channel/UC8DRNRhPwYsnMt0aFgv9gxQ">Rick Komori</a></string>
     <string name="list_of_words">List of Words</string>
     <string name="remembering_japanese">Remembering Japanese</string>
     <string name="start">Start</string>
@@ -60,5 +60,15 @@
     <string name="word_n1">Vocabulary N1</string>
     <string name="dictionary">Dictionary</string>
     <string name="writing">Writing:</string>
-    <string name="credits"></string>
+    <string name="credits">
+        E aí, tudo bem? Espero que este aplicativo seja útil de alguma forma para você. Eu o criei porque sentia falta desse tipo de app para me ajudar nos estudos. Ele é simples, mas pode te auxiliar a estudar quando você tiver um tempinho livre, como no transporte público.
+
+Você pode encontrar o código fonte do projeto no <a href="https://github.com/komoririck/remembering-japanese">Github</a> e utilizá-lo da maneira que desejar, seja para fins comerciais ou não.
+
+É importante ressaltar que o crédito pelas planilhas utilizadas como base de dados pertence ao <a href="http://www.tanos.co.uk/jlpt/">Jonathan Waller</a>. Fiz algumas alterações para o aplicativo e também traduzi para o português brasileiro, mas o mérito das tabelas é dele.
+
+Se o app te ajudar e quiser retribuir, se puder se inscrever no meu <a href="https://www.youtube.com/@rickkomorich/videos">Canal</a> ajudaria bastante.
+
+<a href="linktr.ee/rickkomori">Contato</a>
+    </string>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">apprk</string>
+    <string name="app_name">Memorizando Japonês</string>
     <string name="next">Próximo</string>
     <string name="previous">Anterior</string>
     <string name="return_page">Retornar Página</string>
@@ -39,7 +39,7 @@
     <string name="right_awnser">Certo</string>
     <string name="Logo_Text">RK</string>
     <string name="welcome">Bem-Vindo!</string>
-    <string name="dev_name">Rk</string>
+    <string name="dev_name"><a href="https://www.youtube.com/channel/UC8DRNRhPwYsnMt0aFgv9gxQ">Rick Komori</a></string>
     <string name="list_of_words">Lista de Palavras</string>
     <string name="remembering_japanese">Memorizando Japonês</string>
     <string name="start">Começar</string>
@@ -60,5 +60,15 @@
     <string name="word_n1">Vocabulário N1</string>
     <string name="dictionary">Dictionary</string>
     <string name="writing">Escrita:</string>
-    <string name="credits"></string>
+    <string name="credits">
+        Hope this app is useful in some way for you. I created it because I missed this kind of app to help me with my studies. It\'s simple, but it can help you study when you have a little free time, like on public transport.
+
+You can find the project's source code on <a href="https://github.com/komoririck/remembering-japanese">Github</a> and use it any way you like, commercially or otherwise.
+
+It is important to note that credit for the spreadsheets used as the database belongs to <a href="http://www.tanos.co.uk/jlpt/">Jonathan Waller</a>. I made some changes to the application and also translated it into Brazilian Portuguese, but the tables are credited to him.
+
+If the app helps you and you want to give back, subscribing to my <a href="https://www.youtube.com/@rickkomorich/videos">Channel</a> would really help.
+
+<a href="linktr.ee/rickkomori">Contact-me</a>
+    </string>
 </resources>

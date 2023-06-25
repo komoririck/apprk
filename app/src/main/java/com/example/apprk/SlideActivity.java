@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.util.TypedValue;
@@ -122,10 +123,22 @@ public class SlideActivity extends AppCompatActivity {
         maxIterations[6] = InformationRetrieve.getNumQuestionType6() +1;
         characteresAcertados = InformationRetrieve.getCharacteresAcertados();
 
+        if (!InformationRetrieve.isOnlyQuestions() && (maxIterations[0] == 0)){
+            maxIterations[0] = 5;
+        }
+
+        if ((displayType.equals("kana") || displayType.equals("word")) && (maxIterations[1] + maxIterations[2] + maxIterations[3] + maxIterations[4]) == 0){
+            InformationRetrieve.setOnlySlides(true);
+            InformationRetrieve.setOnlyQuestions(false);
+        }
         if ((maxIterations[0] + maxIterations[1] + maxIterations[2] + maxIterations[3] + maxIterations[4] + maxIterations[5] + maxIterations[6]) == 0) {
             InformationRetrieve.setOnlySlides(true);
             InformationRetrieve.setOnlyQuestions(false);        }
         if ((maxIterations[1] + maxIterations[2] + maxIterations[3] + maxIterations[4] + maxIterations[5] + maxIterations[6]) == 0) {
+            InformationRetrieve.setOnlySlides(true);
+            InformationRetrieve.setOnlyQuestions(false);
+        }
+        if ((displayType.equals("kana") || displayType.equals("word")) && (maxIterations[1] + maxIterations[2] + maxIterations[3] + maxIterations[4]) == 0){
             InformationRetrieve.setOnlySlides(true);
             InformationRetrieve.setOnlyQuestions(false);
         }
@@ -311,6 +324,7 @@ public class SlideActivity extends AppCompatActivity {
                 currentIndex = 0;
 
         star.setVisibility(View.INVISIBLE);
+        Log.d("", ""+currentState);
         switch (currentState) {
             case 0:
                 slideCaseZeroSlide();
@@ -682,7 +696,10 @@ public class SlideActivity extends AppCompatActivity {
                 ValidReading.add(rightAnswer[2]);
             }
             Collections.shuffle(ValidReading);
-            questionTextView.setText(ValidReading.get(0));
+            String s = ValidReading.get(0);
+            String[] arrayS = s.split(" ");
+            setTextViewText(questionTextView, "", arrayS);
+            //questionTextView.setText(ValidReading.get(0));
             currentText = ValidReading.get(0); // Current needs to follow the JP text here
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)

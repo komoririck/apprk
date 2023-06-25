@@ -7,22 +7,21 @@
     android:background="@color/general_background"
     tools:context=".SplashActivity">
 
-    <TextView
+    <ImageView
         android:id="@+id/logo_view"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:text="@string/Logo_Text"
-        android:textSize="100sp"
         android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:background="@drawable/circle_shape"
-        android:backgroundTint="@color/general_main_bar"
+        android:background="@color/general_main_bar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/welcome_text_view"
-        android:src="@drawable/logo"/>
+        android:src="@mipmap/splash_foreground"
+        android:foregroundTint="@drawable/circle_shape"
+        android:scaleType="fitCenter"
+        />
+
 
     <TextView
         android:id="@+id/welcome_text_view"
@@ -49,7 +48,8 @@
         android:text="@string/dev_name"
         android:textAlignment="center"
         android:textColor="@color/text_color"
-        android:textSize="12sp"
+        android:textColorLink="@color/text_color"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.056"
