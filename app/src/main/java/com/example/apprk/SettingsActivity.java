@@ -1,11 +1,19 @@
 package com.example.apprk;
 
         import android.content.Intent;
+        import android.net.Uri;
         import android.os.Bundle;
         import android.text.Editable;
+        import android.text.Html;
+        import android.text.SpannableString;
+        import android.text.Spanned;
         import android.text.TextWatcher;
+        import android.text.method.LinkMovementMethod;
+        import android.text.style.ClickableSpan;
+        import android.view.View;
         import android.widget.CheckBox;
         import android.widget.EditText;
+        import android.widget.TextView;
 
         import androidx.appcompat.app.AppCompatActivity;
 
@@ -88,6 +96,39 @@ public class SettingsActivity extends AppCompatActivity {
         setupEditText(text8);
         setupEditText(text11);
         setupEditText(text12);
+
+
+        // hyperlinks
+        TextView creditsTextView = findViewById(R.id.credits_textview);
+        String creditsString = getString(R.string.credits);
+
+        SpannableString spannableString = new SpannableString(creditsString);
+
+        int githubStartIndex = creditsString.indexOf("Github");
+        int githubEndIndex = githubStartIndex + "Github".length();
+
+        int tanosStartIndex = creditsString.indexOf("Jonathan Waller");
+        int tanosEndIndex = tanosStartIndex + "Jonathan Waller".length();
+
+        int channelStartIndex = creditsString.indexOf("Channel");
+        int channelEndIndex = channelStartIndex + "Channel".length();
+
+        int contactStartIndex = creditsString.indexOf("Contact-me");
+
+        ClickableSpan tanosClickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                // Handle click action for the Tanos hyperlink
+                Uri uri = Uri.parse("http://www.tanos.co.uk/jlpt/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        };
+
+        spannableString.setSpan(tanosClickableSpan, tanosStartIndex, tanosEndIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        creditsTextView.setText(spannableString);
+        creditsTextView.setMovementMethod(LinkMovementMethod.getInstance());
+
 
     }
     private void setupEditText(EditText editText) {
