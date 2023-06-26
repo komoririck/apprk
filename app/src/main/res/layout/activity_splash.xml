@@ -7,21 +7,39 @@
     android:background="@color/general_background"
     tools:context=".SplashActivity">
 
-    <ImageView
-        android:id="@+id/logo_view"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:gravity="center"
-        android:background="@color/general_main_bar"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/general_main_bar"
+        app:cardUseCompatPadding="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/welcome_text_view"
-        android:src="@mipmap/splash_foreground"
-        android:foregroundTint="@drawable/circle_shape"
-        android:scaleType="fitCenter"
-        />
+        app:layout_constraintBottom_toBottomOf="@+id/welcome_text_view">
 
+        <RelativeLayout
+            android:id="@+id/logo_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@mipmap/ic_launcher_round">
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/icon_view"
+        android:layout_width="71dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/splash_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/welcome_text_view"
@@ -33,7 +51,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/text_color"
-        app:layout_constraintTop_toTopOf="@+id/logo_view"
+        app:layout_constraintTop_toTopOf="@+id/card_view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,12 +68,13 @@
         android:textColor="@color/text_color"
         android:textColorLink="@color/text_color"
         android:textSize="15sp"
+        android:autoLink="web"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logo_view"
+        app:layout_constraintTop_toTopOf="@+id/card_view"
         app:layout_constraintVertical_bias="0.971" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -772,8 +772,13 @@ public class SlideActivity extends AppCompatActivity {
     }
     private void setTextViewText(TextView textView, String title, String[] strArray) {
         StringBuilder stringBuilder = new StringBuilder();
+        int i = 0;
         for (String s : strArray) {
-            stringBuilder.append(s).append("\n");
+            i++;
+            if (i == strArray.length)
+                stringBuilder.append(s);
+            else
+                stringBuilder.append(s).append("\n");
         }
         textView.setText(title + stringBuilder);
     }
