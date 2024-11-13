@@ -10,8 +10,9 @@
 
 An application to help Japanese learners memorize kanji, vocabulary, and sounds. It presents a sequence of configurable slides, then asks you questions to test what you’ve learned.
 
+
 <p align="center">
-  <img src = "http://i.imgur.com/HowF6aM.png" width=350>
+  <img src = "https://i.imgur.com/Jh8GF4g.jpeg" width=350>
 </p>
 
 ## Features
